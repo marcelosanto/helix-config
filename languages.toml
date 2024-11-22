@@ -1,0 +1,19 @@
+[language-server.scls]
+command = "simple-completion-language-server"
+config = { max_completion_items = 20, snippets_first = false }
+
+[language-server.scls.environment]
+RUST_LOG = "debug,simple-completion-language-server=debug"
+LOG_FILE = "/tmp/completion.log"
+
+[[language]]
+name = "rust"
+
+[language-server.rust-analyzer.config.check]
+auto-format = true
+language-servers = ["rust-analyzer", "scls"]
+command = "clippy"
+
+[[language]]
+name = "git-commit"
+language-servers = ["scls"]
